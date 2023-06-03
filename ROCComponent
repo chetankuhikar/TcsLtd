@@ -1,10 +1,12 @@
 trigger AccountTrigger on Account(before insert){
+if(trigger.isInsert && trigger.isBefore){
   for(Account objAcc : trigger.new){
   if(objAcc.Rating != trigger.oldMap.get(objAcc.Id).Rating){
      objAcc.Rating = 'Hot'; 
     }
   }
-  if(trigger.isUpdate && trigger.isAfter){
+  }
+  if(trigger.isUpdate && trigger.isBefore){
     for(Account objAcc : trigger.new){
       objAcc.AddError('You Can not Update this Record');
     }
