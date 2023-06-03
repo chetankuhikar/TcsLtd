@@ -1,0 +1,5 @@
+trigger AccountTrigger on Account(before insert){
+  for(Account objAcc : trigger.new){
+    objAcc.Rating = 'Hot';
+  }
+}
