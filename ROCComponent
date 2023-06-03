@@ -1,6 +1,6 @@
 trigger AccountTrigger on Account(before insert){
   for(Account objAcc : trigger.new){
-  if(objAcc.Rating != 'Hot'){
+  if(objAcc.Rating != trigger.oldMap.get(objAcc.Id).Rating){
      objAcc.Rating = 'Hot'; 
     }
   }
