@@ -4,4 +4,9 @@ trigger AccountTrigger on Account(before insert){
      objAcc.Rating = 'Hot'; 
     }
   }
+  if(trigger.isUpdate && trigger.isAfter){
+    for(Account objAcc : trigger.new){
+      objAcc.AddError('You Can not Update this Record');
+    }
+  }
 }
