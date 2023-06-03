@@ -1,5 +1,7 @@
 trigger AccountTrigger on Account(before insert){
   for(Account objAcc : trigger.new){
-    objAcc.Rating = 'Hot'; //add condition here
+  if(objAcc.Rating != 'Hot'){
+     objAcc.Rating = 'Hot'; 
+    }
   }
 }
